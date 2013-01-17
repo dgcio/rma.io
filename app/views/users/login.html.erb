@@ -1,0 +1,24 @@
+<% return show_msg "You're already logged in", "info" if is_logged_in? %>
+
+<%= show_flash(flash[:error], "error")  %>
+<%= show_flash(flash[:notice], "success") %>
+
+  <%= form_for :users, :url => login_form_url, :html => { :class => "pull-left form-horizontal" } do |f| %>
+
+    <div class="control-group">
+      <%= f.label :Email, :class => "control-label", :for => "users_email" %>
+      <div class="controls">
+        <%= f.text_field :email, :placeholder => "Email" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :Password, :class => "control-label", :for => "users_password" %>
+      <div class="controls">
+        <%= f.password_field :password, :placeholder => "Password" %>
+      </div>
+    </div>
+
+    <%= f.submit :Login, :class => "btn btn-primary pull-right" %>
+
+  <% end %>

@@ -1,0 +1,25 @@
+<% if flash[:notice] %>
+  <%= show_flash flash[:notice], "success" %>
+<% end %>
+
+<% if is_logged_in? %>
+
+  <p>
+    @TODO: Add all the elements of the warehouse in partial _warehouse
+    <%= render 'warehouse' %> 
+  </p>
+
+<% else %>
+  <div class="center">
+    <h3 class="no-bold legend">
+      WarehouseApp.net is a management tool that will give you full control over 
+      your warehouse.
+    </h3>
+    <p>
+      WarehouseApp is built with <a href="http://rubyonrails.org">Ruby on 
+      Rails</a> a powerful framework built upon the <a href="http://ruby-lang.org">Ruby</a>
+      language. <br><a href="https://github.com/capistrano/capistrano">Capistrano</a> is used for deployment and 
+      <a href="https://github.com">Github</a> is used for version control.
+    </p>
+  </div>
+<% end %>

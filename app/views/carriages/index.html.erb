@@ -1,0 +1,23 @@
+<% return show_msg "No carriages found. #{link_to 'Create', carriage_new_path, :class => "pull-right"}", "warning" if @carriages.blank? && @carriages_position.blank? %>
+
+<p class="page-header">
+  <%= link_to "Create", carriage_new_path, :class => "btn btn-primary pull-left" %>
+  <%= link_to "Scan", carriage_scan_path, :class => "btn btn-primary pull-left" %>
+</p>
+
+<div class="span11 pull-left">
+  <% @carriages_position.each do |carriage_position| %>
+    <%= content_tag :div, :id => carriage_position, :class => "span3 clearfix" do %>
+      <h3 class="muted no-bold legend">
+        <%= carriage_position.capitalize %>
+      </h3>
+      <% @carriages.each do |carriage| %>
+        <% if carriage_position == carriage.warehouse_point %>
+          <div class="carriage_icon">
+            <%= link_to carriage.model, carriage_show_path(carriage.serial) %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

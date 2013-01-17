@@ -1,0 +1,14 @@
+
+
+<h3 class="no-bold legend"><%= @materials.name %></h3>
+<table class="table table-bordered table-fluid">
+	<li>#<%= @materials.id %></li>
+	<li><%= @materials.artwork %></li>
+	<li><%= @materials.amount_left %></li>
+	<li><%= @materials.amount_per_box %></li>
+	<li><%= @materials.amount_left * @materials.amount_left %></li>
+	<li><%= @materials.wh_position %></li>
+	<li><%= @materials.created_at %></li>
+	<li><%= @materials.updated_at %></li>
+	<li><%= @materials.notes %></li>
+</ul>

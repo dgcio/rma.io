@@ -1,0 +1,46 @@
+<% if flash[:notice] %>
+  <%= show_flash flash[:notice], "success" %>
+<% end -%>
+
+<%= @admin %>
+
+<% if is_admin? %>
+  <ul class="nav nav-pills">
+    <li><%= link_to :New, surveyors_materials_new_path %></li>
+  </ul>
+<% end -%>
+
+<table class="table table-fluid">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Artwork</th>
+      <th>Amount left (Boxes)</th>
+      <th>Amount per box</th>
+      <th>Total Amount</th>
+      <th>Warehouse Position</th>
+      <th>Last Updated</th>
+      <% if is_admin? %>
+        <th>Edit</th>
+        <th>Delete</th>
+      <% end -%>
+    </tr>
+  </thead>
+  <tbody>
+    <% @materials.each do |m| %>
+      <tr class="m<%= m.id %> <%= is_stock_low m.amount_left %>">
+        <td><%= m.name %></td>
+        <td><%= m.artwork %></td>
+        <td><%= m.amount_left %></td>
+        <td><%= m.amount_per_box%></td>
+        <td><%= m.amount_left * m.amount_per_box %></td>
+        <td><%= m.wh_position %></td>
+        <td><%= m.updated_at %></td>
+        <% if is_admin? %>
+          <td><%= link_to :Edit, surveyors_materials_edit_path(m.id) %></td>
+          <td><%= link_to :Destroy, surveyors_materials_delete_path(m.id) %></td>
+        <% end -%>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

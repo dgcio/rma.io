@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  serial: 
+  model: MyString
+  orientation: MyString
+  type: MyString
+  motor: MyString
+  pcb: MyString
+  status: MyString
+  orderno: 1
+
+two:
+  serial: 
+  model: MyString
+  orientation: MyString
+  type: MyString
+  motor: MyString
+  pcb: MyString
+  status: MyString
+  orderno: 1

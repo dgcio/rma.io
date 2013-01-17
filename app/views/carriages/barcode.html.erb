@@ -1,0 +1,25 @@
+<% if carriage_nil? %>
+	<%= show_msg "Invalid Barcode ##{params[:q]}", "error" %>
+<% else %>
+
+	<h3 class="no-bold legend">Barcode Scanner</h3>
+
+	<p>
+	  <%= link_to "Scan", "http://zxing.appspot.com/scan?ret=http://warehouseapp.net/carriages/scan/{CODE}&SCAN_FORMATS=CODE_128", :class => "btn btn-block" %>
+	</p>
+
+	<% if @uniq %>
+	  <%= show_msg "#{content_tag(:b, @uniq.serial)} already exists, what do?", "success" %>
+	  <%= link_to "Edit", carriage_edit_path(@uniq.id), :class => "btn btn-block btn-primary" %><br>
+	  <%= link_to 'Destroy', carriage_delete_path(@barcode), :method => :delete, :class => "btn btn-block btn-primary" %>
+	<% elsif !@uniq && @barcode %>
+	  <%= show_msg "What would you like to do with #{content_tag(:b, @barcode)}", "success" %>
+	  <%= link_to "Add", carriage_new_path + "/" + params[:q], :class => "btn btn-block btn-primary" %><br>
+	<% end %>
+
+	<p class="well">This feature allows you to scan and retrieve information relating 
+		to a barcode. Currently this feature only allows barcodes
+		using the PLAIN TEXT/CODE_128 format for increased performance 
+		during the development phase. </p>
+
+<% end %>

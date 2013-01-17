@@ -1,0 +1,25 @@
+<%= form_for @materials, :url => surveyors_materials_update_path(@materials.id), :html => { :class => "pull-left form-horizontal" } do |f| %>
+
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Name %></div>
+		<div class="controls"><%= f.text_field :name, :placeholder => @materials.name %></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Artwork %></div>
+		<div class="controls"><%= f.text_field :artwork, :placeholder => @materials.artwork %></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Amount_left %></div>
+		<div class="controls"><%= f.text_field :amount_left, :placeholder => @materials.amount_left %></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Amount_per_box %></div>
+		<div class="controls"><%= f.text_field :amount_per_box, :value => @materials.amount_per_box %></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Warehouse_position %></div>
+		<div class="controls"><%= f.text_field :wh_position, :value => @materials.wh_position %></div>
+	</div>
+
+	<%= f.submit :Update %>
+<% end -%>

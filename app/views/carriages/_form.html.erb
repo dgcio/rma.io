@@ -1,0 +1,82 @@
+<%= form_for @carriage, :url => carriage_path, :html => { :class => "form-horizontal" } do |f| %>
+  
+  <% if @carriage.errors.any? %>
+    <div class="span7 pull-right">
+      <%= show_msg "#{pluralize(@carriage.errors.count, "error")} found", "info" %>
+      <ul>
+      <% @carriage.errors.full_messages.each do |error_message| %>
+        <%= content_tag :li, error_message %>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+  <div class="span4 pull-left">
+    <div class="control-group">
+      <%= f.label :Serial, :class => "control-label", :for => "carriages_serial" %>
+      <div class="controls">
+        <%= f.text_field :serial, :value => @barcode, :placeholder => "Serial" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :Model, :class => "control-label", :for => "carriages_model" %>
+      <div class="controls">
+        <%= f.text_field :model, :value => carriage_model, :placeholder => "Model" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :Orientation, :class => "control-label", :for => "carriages_orientation" %>
+      <div class="controls">
+        <%= f.text_field :orientation, :value => carriage_orientation, :placeholder => "Orientation" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :Motor, :class => "control-label", :for => "carriages_motor" %>
+      <div class="controls">
+        <%= f.text_field :motor, :placeholder => "Motor #", :maxlength => 6 %>
+      </div>
+    </div>
+      
+    <div class="control-group">
+      <%= f.label :PCB, :class => "control-label", :for => "carriages_pcb" %>
+      <div class="controls">
+        <%= f.text_field :pcb, :maxlength => 6, :placeholder => "PCB #" %>
+      </div>
+    </div>
+      
+    <div class="control-group">
+      <%= f.label :Order_No, :class => "control-label", :for => "carriages_orderno" %>
+      <div class="controls">
+        <%= f.text_field :orderno, :maxlength => 6, :placeholder => "Order #" %>
+      </div>
+    </div>
+      
+    <div class="control-group">
+      <%= f.label :Warehouse_Point, :class => "control-label", :for => "carriages_warehouse_point" %>
+      <div class="controls">
+        <%= f.text_field :warehouse_point, :placeholder => "Warehouse point" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :Type, :class => "control-label", :for => "carriages_type" %>
+     <div class="controls">
+        <%= select :carriage, :stype, carriage_type.each { |t| [t.humanize, t] } %> 
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :Status, :class => "control-label", :for => "carriages_status" %>
+      <div class="controls">
+        <%= select :carriage, :status, carriage_status.each { |t| [t.humanize, t] } %> 
+      </div>
+    </div>
+
+    <%= f.submit :Add, :class => "pull-right" %>
+  
+  </div>
+  
+<% end %>
