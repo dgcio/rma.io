@@ -18,8 +18,8 @@ class UsersController < ApplicationController
           redirect_to user_index_path
         end
       else
-        render :action => "login", :r => @redirect
         flash[:error] = "Invalid Username and/or Password, please try again."
+        render :action => "login", :r => @redirect
       end
     end
   end

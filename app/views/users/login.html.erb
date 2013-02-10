@@ -1,7 +1,7 @@
 <% return show_msg "You're already logged in", "info" if is_logged_in? %>
 
-<%= show_flash(flash[:error], "error")  %>
-<%= show_flash(flash[:notice], "success") %>
+<%= show_flash flash[:error], "error"  %>
+<%= show_flash flash[:notice], "success" %>
 
   <%= form_for :users, :url => login_form_url, :html => { :class => "pull-left form-horizontal" } do |f| %>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124212619) do
+ActiveRecord::Schema.define(:version => 20130210042244) do
 
   create_table "carriages", :force => true do |t|
     t.integer  "serial",          :limit => 8
@@ -27,15 +27,16 @@ ActiveRecord::Schema.define(:version => 20121124212619) do
     t.datetime "updated_at",                   :null => false
   end
 
-  create_table "materials", :force => true do |t|
-    t.string   "name"
-    t.string   "artwork"
+  create_table "inventories", :force => true do |t|
+    t.text     "name"
+    t.text     "artwork"
     t.integer  "amount_left"
     t.integer  "amount_per_box"
-    t.string   "notes"
+    t.text     "notes"
+    t.text     "department"
+    t.text     "wh_position"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "wh_position"
   end
 
   create_table "seats", :force => true do |t|

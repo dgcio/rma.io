@@ -1,3 +1,5 @@
+<% return show_msg "Invalid deparment parameter given.", "error" if not valid_department %>
+
 <% if flash[:notice] %>
   <%= show_flash flash[:notice], "success" %>
 <% end -%>
@@ -6,7 +8,7 @@
 
 <% if is_admin? %>
   <ul class="nav nav-pills">
-    <li><%= link_to :New, surveyors_materials_new_path %></li>
+    <li><%= link_to :New, materials_inventory_new_path(params[:department]) %></li>
   </ul>
 <% end -%>
 
@@ -27,8 +29,8 @@
     </tr>
   </thead>
   <tbody>
-    <% @materials.each do |m| %>
-      <tr class="m<%= m.id %> <%= is_stock_low m.amount_left %>">
+    <% @inventory.each do |m| %>
+      <tr class="m<%= m.id %><%= is_stock_low m.amount_left %>">
         <td><%= m.name %></td>
         <td><%= m.artwork %></td>
         <td><%= m.amount_left %></td>
@@ -37,8 +39,8 @@
         <td><%= m.wh_position %></td>
         <td><%= m.updated_at %></td>
         <% if is_admin? %>
-          <td><%= link_to :Edit, surveyors_materials_edit_path(m.id) %></td>
-          <td><%= link_to :Destroy, surveyors_materials_delete_path(m.id) %></td>
+          <td><%= link_to :Edit, materials_inventory_edit_path(m.id) %></td>
+          <td><%= link_to :Destroy, materials_inventory_delete_path(m.id, params[:department]) %></td>
         <% end -%>
       </tr>
     <% end -%>

@@ -1,0 +1,26 @@
+
+<%= form_for @inventory, :url => materials_inventory_update_path(@inventory.id), :html => { :class => "pull-left form-horizontal" } do |f| %>
+
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Name %></div>
+		<div class="controls"><%= f.text_field :name, :placeholder => @inventory.name %></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Artwork %></div>
+		<div class="controls"><%= f.text_field :artwork, :placeholder => @inventory.artwork %></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Amount_left %></div>
+		<div class="controls"><%= f.text_field :amount_left, :placeholder => @inventory.amount_left %></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Amount_per_box %></div>
+		<div class="controls"><%= f.text_field :amount_per_box, :value => @inventory.amount_per_box %></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><%= f.label :Warehouse_position %></div>
+		<div class="controls"><%= f.text_field :wh_position, :value => @inventory.wh_position %></div>
+	</div>
+
+	<%= f.submit :Update %>
+<% end -%>

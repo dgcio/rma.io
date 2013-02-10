@@ -1,8 +1,8 @@
-class SurveyorsController < ApplicationController
+class MaterialsController < ApplicationController
 	before_filter :check_logged_in, :only => :index
 
   def index
-  	@materials = Materials.all
+  	@inventory = Inventory.where(:department => params[:department])
   end
 
   protected

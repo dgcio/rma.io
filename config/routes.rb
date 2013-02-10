@@ -28,18 +28,18 @@ Wh::Application.routes.draw do
   match  "users/create", :as => "users", :via => [:post, :get]
   match "logout" => "users#destroy"
 
-  #Surveyors routes, sub materials & orders routes
+  #Surveyors routes, sub inventory & orders routes
 
-  match "surveyors" => "surveyors#index"
+  match ":department/materials" => "materials#index", :as => "materials_index"
 
-  namespace :surveyors do
-    match "materials" => "materials#create", :as => "materials", :via => :post
-    match "materials" => "materials#index"
-    match "materials/new" => "materials#new" 
-    match "materials/:id" => "materials#destroy", :as => "materials_delete", :via => [:get, :delete]
-    match "materials/view/:id" => "materials#show", :as => "materials_show"
-    match "materials/:id" => "materials#update", :as => "materials_update", :via => :put
-    match "materials/edit/:id" => "materials#edit", :as => "materials_edit"
+  namespace :materials do
+    match "inventory/:department" => "inventory#create", :as => "inventory", :via => :post
+    match "inventory" => "inventory#index"
+    match ":department/inventory/new" => "inventory#new", :as => "inventory_new" 
+    match ":id/:epartment/inventory" => "inventory#destroy", :as => "inventory_delete", :via => [:get, :delete]
+    match "/inventory/view/:id" => "inventory#show", :as => "inventory_show"
+    match "/inventory/:id" => "inventory#update", :as => "inventory_update", :via => :put
+    match "/inventory/edit/:id" => "inventory#edit", :as => "inventory_edit"
   end
 
   # JS session update timer route

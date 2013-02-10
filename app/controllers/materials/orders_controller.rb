@@ -1,4 +1,4 @@
-class Surveyors::OrdersController < ApplicationController
+class Materials::OrdersController < ApplicationController
   def index
     @orders = Orders.all
   end

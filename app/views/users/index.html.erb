@@ -2,7 +2,7 @@
 
 <% if is_logged_in? %>
 
-  <%= content_tag :h3, "Welcome, #{user[:name]}", :class => "page-header no-bold" %>
+  <%= content_tag :legend, "Welcome, " + user[:email].humanize %>
 
 <% else %>
 

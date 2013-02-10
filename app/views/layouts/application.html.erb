@@ -22,10 +22,9 @@
           <ul class="nav">
             <li><%= link_to 'Home', root_path %></li>
             <% if is_logged_in? %>
-              <li><%= link_to 'Carriages', carriage_path %></li>
-              <li><%= link_to 'Seats', seats_path %></li>
-              <li><%= link_to 'Rails', root_url %></li>
-              <li><%= link_to 'Surveyors', surveyors_path %></li>              
+              <li><%= link_to :Dealers, materials_index_path("dealers") %></li>
+              <li><%= link_to :Installers, materials_index_path("installers") %></li>
+              <li><%= link_to :Surveyors, materials_index_path("surveyors") %></li>              
             <% end %>
           </ul>
           <ul class="nav pull-right">

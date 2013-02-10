@@ -4,10 +4,7 @@
 
 <% if is_logged_in? %>
 
-  <p>
-    @TODO: Add all the elements of the warehouse in partial _warehouse
-    <%= render 'warehouse' %> 
-  </p>
+  <legend>Welcome, <%= session[:user][:email].humanize %></legend>
 
 <% else %>
   <div class="center">

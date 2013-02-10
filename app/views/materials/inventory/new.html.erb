@@ -1,16 +1,18 @@
+<% return show_msg "Invalid deparment parameter given.", "error" if not valid_department %>
+
 <h3 class="no-bold legend">Create</h3>
 
 <div class="">
-	<% if @materials.errors.any? %>
+	<% if @inventory.errors.any? %>
 		<%= content_tag :ul, :class => "pull-right clearfix" do %>
-			<% @materials.errors.full_messages.each do |e| %>
+			<% @inventory.errors.full_messages.each do |e| %>
 				<%= content_tag :li, e %>
 			<% end -%>
 		<% end -%>
 	<% end -%>
 </div>
 
-<%= form_for @materials, :url => surveyors_materials_path, :html => { :class => "pull-left form-horizontal" } do |f| %>
+<%= form_for @inventory, :url => materials_inventory_path(params[:department]), :html => { :class => "pull-left form-horizontal" } do |f| %>
 
 	<div class="control-group">
 		<div class="control-label"><%= f.label :Name %></div>
