@@ -16,10 +16,10 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Artwork</th>
+      <th class="hidden-phone">Artwork</th>
       <th>Amount left (Boxes)</th>
-      <th>Amount per box</th>
-      <th>Total Amount</th>
+      <th class="hidden-phone">Amount per box</th>
+      <th class="hidden-phone">Total Amount</th>
       <th>Warehouse Position</th>
       <th>Last Updated</th>
       <% if is_admin? %>
@@ -32,10 +32,10 @@
     <% @inventory.each do |m| %>
       <tr class="m<%= m.id %><%= is_stock_low m.amount_left %>">
         <td><%= m.name %></td>
-        <td><%= m.artwork %></td>
+        <td class="hidden-phone"><%= m.artwork %></td>
         <td><%= m.amount_left %></td>
-        <td><%= m.amount_per_box%></td>
-        <td><%= m.amount_left * m.amount_per_box %></td>
+        <td class="hidden-phone"><%= m.amount_per_box%></td>
+        <td class="hidden-phone"><%= m.amount_left * m.amount_per_box %></td>
         <td><%= m.wh_position %></td>
         <td><%= m.updated_at %></td>
         <% if is_admin? %>
