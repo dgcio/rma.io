@@ -1,0 +1,25 @@
+  <%= form_for @inventory, :url => materials_inventory_path(params[:department]) do |f| %>
+  <div class="col-md-7 col-md-push-2">
+    <%= content_tag :div, class: "form-inline form_uni", role: "form", :data => { id: @inventory.id } do %>
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control input-sm", placeholder: @inventory.artwork %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :artwork, class: "form-control input-sm", placeholder: @inventory.artwork %>
+      </div>
+      <div class="form-group">
+      	<%= f.text_field :amount_left, class: "form-control input-sm", placeholder: @inventory.amount_left %>
+      </div>
+      <div class="form-group">
+      	<%= f.text_field :amount_per_box, class: "form-control input-sm", placeholder: @inventory.amount_per_box %>
+      </div>
+      <div class="form-group">
+      	<%= f.text_field :wh_position, class: "form-control input-sm", placeholder: @inventory.wh_position %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.submit class: "btn btn-sm btn-success" %>
+      </div>
+    <% end -%>
+  </div>
+  <% end %>

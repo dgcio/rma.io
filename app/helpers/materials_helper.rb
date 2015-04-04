@@ -7,6 +7,12 @@ module MaterialsHelper
 	end
 
   def valid_department
-  	return ["installers", "surveyors", "dealers"].include? params[:department]
+  	return ["installers", "surveyors", "dealers", "partners"].include? params[:department]
+  end
+
+  def active_tab(department)
+    if params[:department] == department 
+      return 'class="active"'.html_safe
+    end
   end
 end

@@ -1,0 +1,35 @@
+<h1>Listing posts</h1>
+
+<div class="form"></div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+  <tr>
+    <th>#</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Context</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @posts.each do |post| %>
+    <%= content_tag :tr, class: "post_#{post.id}" do %> 
+      <td class="0"><%= post.id %></td>
+      <td class="1"><%= post.title %></td>
+      <td class="2"><%= post.author %></td>
+      <td class="3"><%= post.context %></td>
+      <td><%= link_to 'Notes', post %></td>
+      <td class="4"><%= link_to 'Update', '#', class: "edit_post", id: post.id, remote: true %></td>
+      <td><%= link_to 'X', post, method: :delete %></td>
+      <% end -%>
+  <% end %>
+  </table>
+ </div>
+
+<div id="new_container">
+  <%= link_to 'New Post', '#', class: "new_post", remote: true %>
+</div>
+
+<%= @data %>

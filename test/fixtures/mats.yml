@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  artwork: MyString
+  amount_left: 
+  amount_per_box: 
+  wh_position: MyString
+
+two:
+  name: MyString
+  artwork: MyString
+  amount_left: 
+  amount_per_box: 
+  wh_position: MyString

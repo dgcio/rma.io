@@ -1,20 +1,14 @@
-<% return show_msg "Invalid deparment parameter given.", "error" if not valid_department %>
+<% return show_msg "Invalid department parameter given.", "error" if not valid_department %>
 
 <% if flash[:notice] %>
-  <%= show_flash flash[:notice], "success" %>
+  <div class="well-sm"><%= show_flash flash[:notice], "success" %></div>
 <% end -%>
 
-<%= @admin %>
+<div id="form"></div>
 
-<% if is_admin? %>
-  <ul class="nav nav-pills">
-    <li><%= link_to :New, materials_inventory_new_path(params[:department]) %></li>
-  </ul>
-<% end -%>
-
-<h1>Listing posts</h1>
-
-<div class="form"></div>
+<div class="well-sm pull-right">
+  <%= link_to 'Add Material', '#', class: "btn-sm btn-primary new_mat", remote: true %>
+</div>
 
 <div class="table-responsive">
   <table class="table table-striped">
@@ -26,29 +20,28 @@
       <th class="hidden-phone">Total Amount</th>
       <th>Warehouse Position</th>
       <th>Last Updated</th>
+      <th>&nbsp;</th>
       <% if is_admin? %>
         <th>Delete</th>
       <% end -%>
     </tr>
-    <% @inventory.each do |m| %>
+    <% @mats.each do |m| %>
       <tr class="m<%= m.id %><%= is_stock_low m.amount_left %>">
-        <td><%= m.id %> </td>
         <td><%= m.name %> </td>
         <td class="hidden-phone"><%= m.artwork %></td>
         <td><%= m.amount_left %></td>
         <td class="hidden-phone"><%= m.amount_per_box%></td>
         <td class="hidden-phone"><%= m.amount_left * m.amount_per_box %></td>
         <td><%= m.wh_position %></td>
-        <td><%= m.updated_at %></td>
-        <td class="4"><%= link_to 'Update', '#', class: "edit_material", id: m.id, remote: true %></td>
+        <td><%= format_date m.updated_at %></td>
+        <td class="<%= m.id %>"><%= link_to 'Update', '#', class: "btn-link edit_mat", id: m.id, remote: true %></td>
         <% if is_admin? %>
-          <td><%= link_to :Destroy, materials_inventory_delete_path(m.id, params[:department]) %></td>
+          <td><%= link_to :Destroy, mats_del_path(id: m.id), data: { id: m.id } %></td>
         <% end -%>
       </tr>
     <% end -%>
   </table>
  </div>
 
-<div id="new_container">
-  <%= link_to 'New Post', '#', class: "new_material", remote: true %>
+<div id="add_material">
 </div>

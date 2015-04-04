@@ -4,7 +4,7 @@
 
 <% if is_logged_in? %>
 
-  <legend>Welcome, <%= session[:user][:email].humanize %></legend>
+  <legend>Welcome, <%= session[:user][:name].humanize %></legend>
 
 <% else %>
   <div class="center">

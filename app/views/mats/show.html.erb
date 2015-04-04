@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @mat.name %>
+</p>
+
+<p>
+  <b>Artwork:</b>
+  <%= @mat.artwork %>
+</p>
+
+<p>
+  <b>Amount left:</b>
+  <%= @mat.amount_left %>
+</p>
+
+<p>
+  <b>Amount per box:</b>
+  <%= @mat.amount_per_box %>
+</p>
+
+<p>
+  <b>Wh position:</b>
+  <%= @mat.wh_position %>
+</p>
+
+
+<%= link_to 'Edit', edit_mat_path(@mat) %> |
+<%= link_to 'Back', mats_path %>

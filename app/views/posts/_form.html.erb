@@ -1,0 +1,15 @@
+  <%= form_for(@post) do |f| %>
+  <div class="col-md-7 col-md-push-2">
+    <%= content_tag :div, class: "form-inline form_uni", role: "form", :data => { id: @post.id } do %>
+      <div class="form-group">
+        <%= f.text_field :title, class: "form-control input-sm", placeholder: "title" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :author, class: "form-control input-sm", placeholder: "author" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-sm btn-success" %>
+      </div>
+    <% end -%>
+  </div>
+  <% end %>

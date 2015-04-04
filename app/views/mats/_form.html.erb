@@ -1,0 +1,52 @@
+	<%= form_for(@mat) do |f| %>
+
+	<div class="table-responsive">
+		<table id="edit" class="table">
+		<%= content_tag :div, class: "form-inline form_uni", role: "form", :data => { id: @mat.id } do %>
+		<td>
+			<div class="form-group">
+				<label class="control-label">Name:</label>
+				<div>
+					<%= f.text_field :name, class: "form-control input-sm", placeholder: @mat.artwork, required: true %>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div class="form-group">
+				<label class="control-label">Artwork:</label>
+				<div>
+					<%= f.text_field :artwork, class: "form-control input-sm", placeholder: @mat.artwork %>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div class="form-group">
+				<label class="control-label">Amount Left:</label>
+				<div>
+					<%= f.text_field :amount_left, class: "form-control input-sm", placeholder: @mat.amount_left, required: true  %>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div class="form-group">
+				<label class="control-label">Amount Per Box:</label>
+				<div>
+					<%= f.text_field :amount_per_box, class: "form-control input-sm", placeholder: @mat.amount_per_box, required: true  %>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div class="form-group">
+				<label class="control-label">Location:</label>
+				<div>
+					<%= f.text_field :wh_position, class: "form-control input-sm", placeholder: @mat.wh_position %>
+				</div>
+			</div>
+		</td>
+			<div class="form-group hidden">
+				<%= f.submit class: "btn btn-sm btn-success" %>
+			</div>
+		<% end -%>
+	</table>
+	</div>
+	<% end %>

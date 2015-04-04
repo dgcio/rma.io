@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     
     if request.post?
       if @user.save
-        UserMailer.signup_confirmation(@user).deliver
+        #UserMailer.signup_confirmation(@user).deliver
         redirect_to login_path, :notice => "Thank you, " + @user.email + " you may login below."
       else
         render :action => :register

@@ -13,7 +13,6 @@
 .pre_fluid {
     max-width: 1170px;
     margin: 0 auto;
-    color: #333;
 }
 .center-form {
     width: 40.37234042553192%;
@@ -48,7 +47,6 @@
   margin-bottom: 20px;
   font-size: 21px;
   line-height: 40px;
-  color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
 }

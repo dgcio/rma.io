@@ -5,29 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= favicon_link_tag %>
   <%= stylesheet_link_tag 'application' %>
-  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js', 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div class="navbar navbar-static-top">
-    <div class="navbar-inner">
+
+   <div class="navbar navbar-default navbar-static-top" role="navigation">
       <div class="container">
-        <button type="button" class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <div class="brand">WarehouseApp</div>
-        <div class="nav-collapse collapse">
-          <ul class="nav">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">WarehouseApp</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
             <li><%= link_to 'Home', root_path %></li>
-            <% if is_logged_in? %>
-              <li><%= link_to :Dealers, materials_index_path("dealers") %></li>
-              <li><%= link_to :Installers, materials_index_path("installers") %></li>
-              <li><%= link_to :Surveyors, materials_index_path("surveyors") %></li>              
-            <% end %>
+              <% if is_logged_in? %>
+                <li <%= active_tab("dealers") %>><%= link_to "Dealers", mats_path(:dealers) %></li>
+                <li <%= active_tab("installers") %>><%= link_to "Installers", mats_path(:installers) %></li>
+                <li <%= active_tab("partners") %>><%= link_to "Partners", mats_path(:partners) %></li>
+                <li <%= active_tab("surveyors") %>><%= link_to "Surveyors", mats_path(:surveyors) %></li>            
+              <% end %>
           </ul>
-          <ul class="nav pull-right">
+          <ul class="nav navbar-nav navbar-right">
             <% if is_logged_in? %>
               <li><%= link_to 'Logout', logout_path %> </li>
             <% else %>
@@ -35,10 +38,9 @@
               <li><%= link_to 'Register', register_path %></li>
             <% end %>
           </ul>
-        </div>
+        </div><!--/.nav-collapse -->
       </div>
-    </div>	
-  </div>
+    </div>
   
   <div class="subnav container">   
     <div class="row-fluid">
@@ -52,10 +54,11 @@
     </div>
   </div>
 
-  <div class="container-fluid pre_fluid navbar navbar-fixed-bottom">
+  <div class="container">
     <div class="pull-right muted">
       &copy; <%= Time.now.year %> WarehouseApp.net / <%= link_to "About", about_path %> / <%= link_to "Contact", contact_path %> 
     </div>
   </div>
 </body>
 </html>
+<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js', 'application' %>

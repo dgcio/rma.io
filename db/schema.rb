@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210042244) do
+ActiveRecord::Schema.define(:version => 20141026214229) do
 
   create_table "carriages", :force => true do |t|
     t.integer  "serial",          :limit => 8
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(:version => 20130210042244) do
     t.text     "wh_position"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "mats", :force => true do |t|
+    t.string   "name"
+    t.string   "artwork"
+    t.integer  "amount_left"
+    t.integer  "amount_per_box"
+    t.string   "wh_position"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "department"
   end
 
   create_table "seats", :force => true do |t|

@@ -21,4 +21,13 @@ module ApplicationHelper
   def flash_session_expired
     return session[:expire] = session[:user] = nil 
   end
+
+  def show_form_input_field(label, text_field, text_field_options)
+    content_tag :div,:class => "control-group" do
+      content_tag :div, label
+      content_tag :div do
+        text_field text_field, text_field_options
+      end
+    end
+  end
 end
