@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mats:</b>
+  <%= @barcode.mats_id %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%= @barcode.product_id %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @barcode.amount %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @barcode.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_barcode_path(@barcode) %> |
+<%= link_to 'Back', barcodes_path %>

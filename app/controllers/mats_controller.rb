@@ -3,7 +3,7 @@ class MatsController < ApplicationController
   # GET /mats
   # GET /mats.json
   def index
-    @mats = Mat.where(:department => params[:department])
+    @mats = Mat.check_departments(Mat.all, params[:department])
   end
 
   # GET /mats/1
@@ -35,11 +35,11 @@ class MatsController < ApplicationController
   # POST /mats.json
   def create
     @mat = Mat.new(params[:mat])
-    @mat.department = params[:department]
+    @mat.department = Mat.arr2str_checkboxes(params[:chk])
 
     respond_to do |format|
       if @mat.save
-        format.html { redirect_to mats_path(params[:department]), notice: 'Materials successfully created.' }
+        format.html { redirect_to request.referer, notice: 'Materials successfully created.' }
         format.json { render json: @mat, status: :created, location: @mat }
       else
         format.html { render action: "new" }
@@ -51,12 +51,18 @@ class MatsController < ApplicationController
   # PUT /mats/1
   # PUT /mats/1.json
   def update
-    @mat = Mat.find(params[:id])
-    @department = @mat.department
+    @mat = Mat.find(params[:id]) 
+    dept = params[:chk]
+    logger.debug dept
+    if dept.nil?
+      params[:mat][:department] = 'obsolete'
+    else
+      params[:mat][:department] = Mat.arr2str_checkboxes(params[:chk])
+    end
 
     respond_to do |format|
       if @mat.update_attributes(params[:mat])
-        format.html { redirect_to mats_path(@department), notice: 'Mat was successfully updated.' }
+        format.html { redirect_to request.referer, notice: 'Mat was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

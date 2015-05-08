@@ -2,7 +2,26 @@
 
 <% if is_logged_in? %>
     
-    <p> Choose the department above to view the assigned materials inventory. </p>
+    <div class="">
+    	<div class="well" style="text-align: center;"> 
+    		Choose a department above to view the assigned materials inventory or choose an option from below to receive or update inventory records.  
+    	</div>
+        <%= link_to "Obsolete materials", mats_path(:obsolete), :class => 'well btn btn-block'  %>
+    <!-- <div class="col-xs-6">
+            ###
+    		<%= link_to "Update", "http://zxing.appspot.com/scan?ret=http://0.0.0.0:3000/scan/update/{CODE}&SCAN_FORMATS=CODE_128", :class => "btn btn-primary btn-block" %>
+            ###
+    		<br>
+    		Use this option to update a specific materail record, please make suey ou have the barcode scanning app on your Android phone. 
+    	</div>
+    	<div class="col-xs-6">
+    		###
+            <%= link_to "Receive", "http://zxing.appspot.com/scan?ret=http://0.0.0.0:3000/scan/receive/{CODE}&SCAN_FORMATS=CODE_128", :class => "btn btn-primary btn-block" %>
+    		###
+            <br>
+    		Receive a delivery into our inventory.
+    	</div> -->
+    </div>
 
 <% else %>
 

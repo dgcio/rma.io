@@ -6,7 +6,7 @@ module MatsHelper
 	end
 
 	def valid_department
-		return ["installers", "surveyors", "dealers", "partners"].include? params[:department]
+		return ["installers", "surveyors", "dealers", "partners", "obsolete"].include? params[:department]
 	end
 
 	def active_tab(department)
@@ -19,5 +19,15 @@ module MatsHelper
 		d = date
 		return d.strftime("%m/%d/%Y @ %I:%M%p")
 	end
-end
 
+	def active_departments(department)
+		if @mat.department.nil?
+			return "checked" if params[:department] == department
+		else
+			dept_arr = @mat.department.split(',')
+			dept_arr.each do |dept|
+				return "checked" if dept == department
+			end
+		end
+	end	
+end

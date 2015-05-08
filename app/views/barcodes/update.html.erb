@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="col-xs-4">	
+		<%= form_for(@material) do |f| %>
+			<legend>Update Amount:</legend>
+			<%= content_tag :div, class: "form-inline form_uni", role: "form", :data => { id: @material.id } do %>
+				<%= f.number_field :amount_left, class: "amt_left form-control input-sm", value: @material.amount_left, required: true, autofocus: true %>
+			<% end -%>
+		<% end -%>
+	</div>
+	<div class="col-xs-4">
+		<%= form_for(@material) do |f| %>
+			<legend>Update Amount:</legend>
+			<%= content_tag :div, class: "form_uni", role: "form", :data => { id: @material.id } do %>
+				<%= f.number_field :amount_left, class: "amt_left form-control input-sm", value: @material.amount_left, required: true, autofocus: true %>
+			<% end -%>
+		<% end -%>
+	</div>
+</div>
+

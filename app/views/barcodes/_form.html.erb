@@ -1,0 +1,33 @@
+<%= form_for(@barcode) do |f| %>
+  <% if @barcode.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@barcode.errors.count, "error") %> prohibited this barcode from being saved:</h2>
+
+      <ul>
+      <% @barcode.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mats_id %><br />
+    <%= f.number_field :mats_id %>
+  </div>
+  <div class="field">
+    <%= f.label :product_id %><br />
+    <%= f.text_area :product_id %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.number_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_area :type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

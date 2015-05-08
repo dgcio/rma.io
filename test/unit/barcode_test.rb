@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MaterialTest < ActiveSupport::TestCase
+class BarcodeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

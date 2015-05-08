@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141026214229) do
+ActiveRecord::Schema.define(:version => 20150412165108) do
+
+  create_table "barcodes", :force => true do |t|
+    t.integer  "mats_id"
+    t.text     "product_id"
+    t.integer  "amount"
+    t.text     "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "carriages", :force => true do |t|
     t.integer  "serial",          :limit => 8

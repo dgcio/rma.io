@@ -1,13 +1,17 @@
-	<%= form_for(@mat) do |f| %>
+	<% if @thisistrue %>
+		<div>youwinNOTHING</abc>
+	<% end -%>
 
-	<div class="table-responsive">
+	<%= form_for @mat, url: { :department => params[:department] } do |f| %>
+
+	<div class="">
 		<table id="edit" class="table">
 		<%= content_tag :div, class: "form-inline form_uni", role: "form", :data => { id: @mat.id } do %>
 		<td>
 			<div class="form-group">
 				<label class="control-label">Name:</label>
 				<div>
-					<%= f.text_field :name, class: "form-control input-sm", placeholder: @mat.artwork, required: true %>
+					<%= f.text_field :name, class: "form-control input-sm", placeholder: @mat.artwork, required: true, autofocus: true %>
 				</div>
 			</div>
 		</td>
@@ -23,7 +27,7 @@
 			<div class="form-group">
 				<label class="control-label">Amount Left:</label>
 				<div>
-					<%= f.text_field :amount_left, class: "form-control input-sm", placeholder: @mat.amount_left, required: true  %>
+					<%= f.number_field :amount_left, class: "form-control input-sm", placeholder: @mat.amount_left, required: true  %>
 				</div>
 			</div>
 		</td>
@@ -31,7 +35,7 @@
 			<div class="form-group">
 				<label class="control-label">Amount Per Box:</label>
 				<div>
-					<%= f.text_field :amount_per_box, class: "form-control input-sm", placeholder: @mat.amount_per_box, required: true  %>
+					<%= f.number_field :amount_per_box, class: "form-control input-sm", placeholder: @mat.amount_per_box, required: true  %>
 				</div>
 			</div>
 		</td>
@@ -43,10 +47,34 @@
 				</div>
 			</div>
 		</td>
-			<div class="form-group hidden">
-				<%= f.submit class: "btn btn-sm btn-success" %>
-			</div>
+		<div class="form-group pull-left well-sm">
+			<label class="checkbox-inline" for="chkDealers">
+            	<input type="checkbox" name="chk[0]" id="chkDealers" value="Dealers" <%= active_departments("dealers") %>>
+            	Dealers
+        	</label> 
+        </div>
+        <div class="form-group pull-left well-sm">
+        	<label class="checkbox-inline" for="chkInstallers">
+            	<input type="checkbox" name="chk[1]" id="chkInstallers" value="Installers" <%= active_departments("installers") %>>
+            	Installers
+        	</label> 
+        </div>
+        <div class="form-group pull-left well-sm">
+        	<label class="checkbox-inline" for="chkPartners">
+            	<input type="checkbox" name="chk[2]" id="chkPartners" value="Partners" <%= active_departments("partners") %>>
+            	Partners
+        	</label> 
+        </div>
+        <div class="form-group pull-left well-sm">
+        	<label class="checkbox-inline" for="chkSurveyors">
+            	<input type="checkbox" name="chk[3]" id="chkSurveyors" value="Surveyors" <%= active_departments("surveyors") %>>
+            	Surveyors
+        	</label> 
+        </div>
 		<% end -%>
 	</table>
+	</div> 
+	<div class="form-group hidden">
+		<%= f.submit class: "btn btn-sm btn-success" %>
 	</div>
 	<% end %>

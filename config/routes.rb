@@ -31,14 +31,18 @@ Wh::Application.routes.draw do
   #Surveyors routes, sub inventory & orders routes
 
   match ":department/mats" => "mats#index", :as => "mats", via: [:get]
-  match ":department/mats" => "mats#create", via: [:post]
   match ":department/mats/new" => "mats#new", :as => "new_mat", via: [:get]
+  match ":department/mats/new" => "mats#create", via: [:post]
   match ":department/mats/:id/edit" => "mats#edit", :as => "edit_mat", via: [:get]
   match "mats/:id" => "mats#show", :as => "mat", via: [:get]
-  match ":department/mat/:id" => "mats#update",:as => "mat", via: [:put]
+  match ":department/mats/:id/edit" => "mats#update",:as => "mat", via: [:put]
   match ":department/mat/:id" => "mats#destroy", :as => "mats_del", via: [:get, :destroy]
 
+  # barcode resources
 
+  match "barcodes" => "barcodes#index"
+  match "scan/update/:id" => "barcodes#update"
+  match "scan/receive/:id" => "barcodes#receive"
 
   # JS session update timer route
 

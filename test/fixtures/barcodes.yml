@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mats_id: 1
+  product_id: MyText
+  amount: 1
+  type: MyText
+
+two:
+  mats_id: 1
+  product_id: MyText
+  amount: 1
+  type: MyText

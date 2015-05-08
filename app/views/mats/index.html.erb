@@ -10,38 +10,42 @@
   <%= link_to 'Add Material', '#', class: "btn-sm btn-primary new_mat", remote: true %>
 </div>
 
-<div class="table-responsive">
-  <table class="table table-striped">
-    <tr>
-      <th>Name</th>
-      <th class="hidden-phone">Artwork</th>
-      <th>Amount left (Boxes)</th>
-      <th class="hidden-phone">Amount per box</th>
-      <th class="hidden-phone">Total Amount</th>
-      <th>Warehouse Position</th>
-      <th>Last Updated</th>
-      <th>&nbsp;</th>
-      <% if is_admin? %>
-        <th>Delete</th>
+<div id="">
+  <div class="">
+    <table class="table sticky-header">
+      <thead style="background-color: #FFF">
+        <tr>
+          <th>Name</th>
+          <th class="hidden-phone">Artwork</th>
+          <th>Amount left (Boxes)</th>
+          <th class="hidden-phone">Amount per box</th>
+          <th class="hidden-phone">Total Amount</th>
+          <th>Warehouse Position</th>
+          <th>Last Updated</th>
+          <% if is_admin? %>
+            <th>Delete</th>
+          <% end -%>
+        </tr>
+      </thead>
+      <% @mats.each do |m| %>
+        <tbody>
+          <tr class="m<%= m.id %><%= is_stock_low m.amount_left %>">
+            <td><%= m.name %> </td>
+            <td class="hidden-phone"><%= m.artwork %></td>
+            <td><%= m.amount_left %></td>
+            <td class="hidden-phone"><%= m.amount_per_box%></td>
+            <td class="hidden-phone"><%= m.amount_left * m.amount_per_box %></td>
+            <td><%= m.wh_position %></td>
+            <td><%= format_date m.updated_at %></td>
+            <% if is_admin? %>
+            <td class="<%= m.id %>"><%= link_to 'Update', '#', class: "btn-link edit_mat", id: m.id, remote: true %></td>
+              <td><%= link_to :Destroy, mats_del_path(id: m.id), data: { id: m.id } %></td>
+            <% end -%>
+          </tr>
+        </tbody>
       <% end -%>
-    </tr>
-    <% @mats.each do |m| %>
-      <tr class="m<%= m.id %><%= is_stock_low m.amount_left %>">
-        <td><%= m.name %> </td>
-        <td class="hidden-phone"><%= m.artwork %></td>
-        <td><%= m.amount_left %></td>
-        <td class="hidden-phone"><%= m.amount_per_box%></td>
-        <td class="hidden-phone"><%= m.amount_left * m.amount_per_box %></td>
-        <td><%= m.wh_position %></td>
-        <td><%= format_date m.updated_at %></td>
-        <td class="<%= m.id %>"><%= link_to 'Update', '#', class: "btn-link edit_mat", id: m.id, remote: true %></td>
-        <% if is_admin? %>
-          <td><%= link_to :Destroy, mats_del_path(id: m.id), data: { id: m.id } %></td>
-        <% end -%>
-      </tr>
-    <% end -%>
-  </table>
+    </table>
+   </div>
  </div>
-
 <div id="add_material">
 </div>

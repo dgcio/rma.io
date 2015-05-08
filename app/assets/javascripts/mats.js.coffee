@@ -44,3 +44,5 @@ jQuery ->
 	$('a.edit_mat').click ->
 		updateFormActive(this.id + "/edit", ["#form", ""])
 		scrollWhere(true)
+
+		
