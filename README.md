@@ -1,4 +1,4 @@
-http://warehouseapp.net
+Currently hosted @ http://rma.io/
 =======
-wh
+Ruby on Rails powered inventory management system for paper materials.
 ==
